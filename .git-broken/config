@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[gui]
+	wmstate = normal
+	geometry = 893x435+1154+368 175 196
+[remote "dash134PRI"]
+	url = https://github.com/dash134PRI/Foreigner-Friendly-Housing-Finder-in-Korea
+	fetch = +refs/heads/*:refs/remotes/dash134PRI/*
+[remote "origin"]
+	url = https://github.com/dash134PRI/Housing-Finder-for-Foreigners-in-Korea.git
+	fetch = +refs/heads/*:refs/remotes/origin/*

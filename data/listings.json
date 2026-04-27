@@ -1,0 +1,250 @@
+[
+  {
+    "id": "sinchon_01",
+    "title": "Sinchon Student Studio",
+    "district": "Seodaemun-gu",
+    "area": "Sinchon",
+    "deposit": 4000000,
+    "rent": 520000,
+    "maintenance": 60000,
+    "utilities_note": "all_included",
+    "heating_type": "central",
+    "walk_to_station_min": 5,
+    "neighborhood": {
+      "foreign_grocery": true,
+      "clinic": true,
+      "area_type": "student-friendly"
+    },
+    "risk_flags": [],
+    "scenario_type": "good"
+  },
+  {
+    "id": "sinchon_02",
+    "title": "Cheap Sinchon Room",
+    "district": "Seodaemun-gu",
+    "area": "Sinchon",
+    "deposit": 3000000,
+    "rent": 420000,
+    "maintenance": 150000,
+    "utilities_note": "unclear",
+    "heating_type": "gas",
+    "walk_to_station_min": 7,
+    "neighborhood": {
+      "foreign_grocery": true,
+      "clinic": true,
+      "area_type": "student-friendly"
+    },
+    "risk_flags": [
+      "High maintenance fee",
+      "Utilities unclear"
+    ],
+    "scenario_type": "hidden_cost_trap"
+  },
+  {
+    "id": "sinchon_03",
+    "title": "Modern Officetel Sinchon",
+    "district": "Seodaemun-gu",
+    "area": "Sinchon",
+    "deposit": 8000000,
+    "rent": 780000,
+    "maintenance": 90000,
+    "utilities_note": "not_included",
+    "heating_type": "gas",
+    "walk_to_station_min": 4,
+    "neighborhood": {
+      "foreign_grocery": true,
+      "clinic": true,
+      "area_type": "student-friendly"
+    },
+    "risk_flags": [
+      "High rent",
+      "Utilities not included"
+    ],
+    "scenario_type": "expensive"
+  },
+  {
+    "id": "ansan_01",
+    "title": "Ansan Budget Studio",
+    "district": "Ansan",
+    "area": "Ansan",
+    "deposit": 3000000,
+    "rent": 380000,
+    "maintenance": 50000,
+    "utilities_note": "unclear",
+    "heating_type": "gas",
+    "walk_to_station_min": 12,
+    "neighborhood": {
+      "foreign_grocery": true,
+      "clinic": false,
+      "area_type": "expat-friendly"
+    },
+    "risk_flags": [
+      "Utilities unclear"
+    ],
+    "scenario_type": "hidden_cost_trap"
+  },
+  {
+    "id": "ansan_02",
+    "title": "Ansan Clean One-room",
+    "district": "Ansan",
+    "area": "Ansan",
+    "deposit": 5000000,
+    "rent": 450000,
+    "maintenance": 60000,
+    "utilities_note": "all_included",
+    "heating_type": "central",
+    "walk_to_station_min": 8,
+    "neighborhood": {
+      "foreign_grocery": true,
+      "clinic": true,
+      "area_type": "expat-friendly"
+    },
+    "risk_flags": [],
+    "scenario_type": "good"
+  },
+  {
+    "id": "itaewon_01",
+    "title": "Itaewon Studio Loft",
+    "district": "Yongsan-gu",
+    "area": "Itaewon",
+    "deposit": 10000000,
+    "rent": 850000,
+    "maintenance": 100000,
+    "utilities_note": "not_included",
+    "heating_type": "gas",
+    "walk_to_station_min": 5,
+    "neighborhood": {
+      "foreign_grocery": true,
+      "clinic": true,
+      "area_type": "expat-friendly"
+    },
+    "risk_flags": [
+      "Very high rent",
+      "Utilities not included"
+    ],
+    "scenario_type": "expensive"
+  },
+  {
+    "id": "itaewon_02",
+    "title": "Itaewon Shared Housing",
+    "district": "Yongsan-gu",
+    "area": "Itaewon",
+    "deposit": 3000000,
+    "rent": 500000,
+    "maintenance": 80000,
+    "utilities_note": "all_included",
+    "heating_type": "central",
+    "walk_to_station_min": 6,
+    "neighborhood": {
+      "foreign_grocery": true,
+      "clinic": true,
+      "area_type": "expat-friendly"
+    },
+    "risk_flags": [],
+    "scenario_type": "good"
+  },
+  {
+    "id": "gangnam_01",
+    "title": "Gangnam Officetel Premium",
+    "district": "Gangnam-gu",
+    "area": "Gangnam",
+    "deposit": 12000000,
+    "rent": 950000,
+    "maintenance": 120000,
+    "utilities_note": "not_included",
+    "heating_type": "gas",
+    "walk_to_station_min": 3,
+    "neighborhood": {
+      "foreign_grocery": false,
+      "clinic": true,
+      "area_type": "business"
+    },
+    "risk_flags": [
+      "Very high cost"
+    ],
+    "scenario_type": "bad"
+  },
+  {
+    "id": "hongdae_01",
+    "title": "Hongdae Studio",
+    "district": "Mapo-gu",
+    "area": "Hongdae",
+    "deposit": 6000000,
+    "rent": 650000,
+    "maintenance": 70000,
+    "utilities_note": "unclear",
+    "heating_type": "gas",
+    "walk_to_station_min": 6,
+    "neighborhood": {
+      "foreign_grocery": true,
+      "clinic": true,
+      "area_type": "young"
+    },
+    "risk_flags": [
+      "Utilities unclear"
+    ],
+    "scenario_type": "hidden_cost_trap"
+  },
+  {
+    "id": "hongdae_02",
+    "title": "Hongdae Budget Room",
+    "district": "Mapo-gu",
+    "area": "Hongdae",
+    "deposit": 4000000,
+    "rent": 480000,
+    "maintenance": 50000,
+    "utilities_note": "all_included",
+    "heating_type": "central",
+    "walk_to_station_min": 10,
+    "neighborhood": {
+      "foreign_grocery": true,
+      "clinic": true,
+      "area_type": "young"
+    },
+    "risk_flags": [],
+    "scenario_type": "good"
+  },
+  {
+    "id": "edge_01",
+    "title": "Semi-basement Studio",
+    "district": "Seoul",
+    "area": "Generic",
+    "deposit": 3000000,
+    "rent": 400000,
+    "maintenance": 60000,
+    "utilities_note": "unclear",
+    "heating_type": "gas",
+    "walk_to_station_min": 15,
+    "neighborhood": {
+      "foreign_grocery": false,
+      "clinic": false,
+      "area_type": "unknown"
+    },
+    "risk_flags": [
+      "Semi-basement (banjiha)",
+      "Poor ventilation"
+    ],
+    "scenario_type": "edge_case"
+  },
+  {
+    "id": "edge_02",
+    "title": "Large Deposit Low Rent",
+    "district": "Seoul",
+    "area": "Generic",
+    "deposit": 20000000,
+    "rent": 300000,
+    "maintenance": 70000,
+    "utilities_note": "unclear",
+    "heating_type": "gas",
+    "walk_to_station_min": 8,
+    "neighborhood": {
+      "foreign_grocery": false,
+      "clinic": true,
+      "area_type": "unknown"
+    },
+    "risk_flags": [
+      "Very high deposit"
+    ],
+    "scenario_type": "bad"
+  }
+]
