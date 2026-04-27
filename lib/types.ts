@@ -43,6 +43,7 @@ export type Persona = {
   id: string;
   label: string;
   subtitle: string;
+  renterType?: 'student' | 'worker' | 'remote';
   targetArea: string;
   maxDeposit: number;
   maxRent: number;

@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { SeasonalCostSimulation } from '../components/SeasonalCostSimulation';
 import rawListings from '../data/listings.json';
 import { generateExplanation, generateKoreanMessage, ListingSignal } from '../lib/listingSignals';
-import { personas } from '../lib/personas';
+import { createPersona, renterTypes, RenterTypeId, targetAreas, TargetAreaId } from '../lib/personas';
 import { rankListings } from '../lib/scoring';
 import { Listing, Persona, ScoredListing } from '../lib/types';
 
@@ -447,14 +447,26 @@ function ComparePanel({ selected, onClear, onRemove }: { selected: ScoredListing
 
 export default function Home() {
   const listings = rawListings as Listing[];
-  const [persona, setPersona] = useState<Persona>(personas[0]);
+  const [renterType, setRenterType] = useState<RenterTypeId>('student');
+  const [targetArea, setTargetArea] = useState<TargetAreaId>('Sinchon');
   const [compareIds, setCompareIds] = useState<string[]>([]);
 
-  const ranked = useMemo(() => rankListings(listings, persona), [listings, persona]);
+  const persona = useMemo<Persona>(() => createPersona(renterType, targetArea), [renterType, targetArea]);
+  const visibleListings = useMemo(
+    () => listings.filter((listing) => listing.area === targetArea),
+    [listings, targetArea],
+  );
+  const ranked = useMemo(() => rankListings(visibleListings, persona), [visibleListings, persona]);
   const selected = ranked.filter((item) => compareIds.includes(item.id));
 
-  function selectPersona(next: Persona) {
-    setPersona(next);
+  function updateRenterType(next: RenterTypeId) {
+    setRenterType(next);
+    setCompareIds([]);
+    window.requestAnimationFrame(() => window.scrollTo({ top: 400, behavior: 'smooth' }));
+  }
+
+  function updateTargetArea(next: TargetAreaId) {
+    setTargetArea(next);
     setCompareIds([]);
     window.requestAnimationFrame(() => window.scrollTo({ top: 400, behavior: 'smooth' }));
   }
@@ -471,13 +483,42 @@ export default function Home() {
         <p>We help you understand real costs, risks, and what to ask before renting.</p>
       </section>
 
-      <section className="grid personas">
-        {personas.map((p) => (
-          <button key={p.id} className={`card persona ${persona.id === p.id ? 'active' : ''}`} onClick={() => selectPersona(p)}>
-            <h3>{p.label}</h3>
-            <p>{p.subtitle}</p>
-          </button>
-        ))}
+      <section className="selectorPanel card">
+        <div>
+          <p className="selectorEyebrow">1. Who is searching?</p>
+          <div className="grid personas">
+            {renterTypes.map((type) => (
+              <button key={type.id} className={`persona ${renterType === type.id ? 'active' : ''}`} onClick={() => updateRenterType(type.id)}>
+                <h3>{type.label}</h3>
+                <p>{type.subtitle}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <p className="selectorEyebrow">2. Which area?</p>
+          <div className="grid personas">
+            {targetAreas.map((area) => (
+              <button key={area.id} className={`persona areaOption ${targetArea === area.id ? 'active' : ''}`} onClick={() => updateTargetArea(area.id)}>
+                <h3>{area.label}</h3>
+                <p>{area.subtitle}</p>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="areaSummary card">
+        <div>
+          <p className="selectorEyebrow">Current demo scenario</p>
+          <h2>{persona.label}</h2>
+          <p className="small">Showing {ranked.length} listings in {targetArea}. The renter type changes budget, scoring, and ranking.</p>
+        </div>
+        <div className="areaStats">
+          <span>{listings.length} total listings</span>
+          <span>{ranked.length} shown</span>
+        </div>
       </section>
 
       <div className="toolbar">

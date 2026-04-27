@@ -35,8 +35,38 @@ export function locationScore(listing: Listing, persona: Persona) {
   else if (listing.walk_to_station_min <= 10) walkScore = 80;
   else if (listing.walk_to_station_min <= 15) walkScore = 60;
 
-  const areaBonus = listing.area.toLowerCase().includes(persona.targetArea.toLowerCase()) ? 15 : 0;
+  const areaMatch = listing.area.toLowerCase().includes(persona.targetArea.toLowerCase());
+  const areaBonus = areaMatch ? 20 : -20;
   return clamp(walkScore + areaBonus);
+}
+
+export function personaFitScore(listing: Listing, persona: Persona) {
+  let score = 50;
+  const roomType = (listing.room_type ?? '').toLowerCase();
+  const areaType = listing.neighborhood.area_type.toLowerCase();
+
+  if (persona.renterType === 'student') {
+    if (areaType.includes('student')) score += 25;
+    if (roomType.includes('shared')) score += 15;
+    if (listing.deposit <= persona.maxDeposit) score += 15;
+    if (estimateTrueCost(listing) <= persona.maxRent) score += 15;
+  }
+
+  if (persona.renterType === 'worker') {
+    if (areaType.includes('business')) score += 25;
+    if (roomType.includes('officetel')) score += 15;
+    if (listing.walk_to_station_min <= 7) score += 15;
+    if (listing.risk_flags.length === 0) score += 10;
+  }
+
+  if (persona.renterType === 'remote') {
+    if (areaType.includes('young') || areaType.includes('expat') || areaType.includes('quiet')) score += 20;
+    if ((listing.size_m2 ?? 0) >= 22) score += 15;
+    if (normalizeUtilitiesNote(listing.utilities_note) === 'all_included') score += 15;
+    if (listing.neighborhood.clinic && listing.neighborhood.foreign_grocery) score += 10;
+  }
+
+  return clamp(score);
 }
 
 export function detectHiddenCosts(
@@ -114,7 +144,8 @@ export function scoreListing(
   const affordability = affordabilityScore(listing, persona);
   const location = locationScore(listing, persona);
   const convenience = convenienceScore(listing);
-  const rawScore = Math.round(0.4 * affordability + 0.3 * location + 0.3 * convenience);
+  const fit = personaFitScore(listing, persona);
+  const rawScore = Math.round(0.32 * affordability + 0.28 * location + 0.22 * convenience + 0.18 * fit);
   const hiddenCostWarnings = detectHiddenCosts(listing, districtAvgRent, persona);
   const hiddenCostSeverity = classifyHiddenCostSeverity(hiddenCostWarnings);
   const signals = extractListingSignals(listing, persona);
