@@ -1,6 +1,6 @@
 # HomeBridge Korea
 
-A hackathon MVP for a foreigner-friendly housing decision-support assistant in Korea.
+A foreigner-friendly housing decision-support assistant in Korea.
 
 ## What it does
 - Provides persona-based housing recommendations
@@ -15,4 +15,4 @@ A hackathon MVP for a foreigner-friendly housing decision-support assistant in K
 ## Disclaimer
 Demo prototype only. Not legal or financial advice.
 "# Housing-Finder-for-Foreingers-in-Korea" 
-"# Housing-Finder-for-Foreigners-in-Korea" 
+
